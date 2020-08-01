@@ -1,4 +1,3 @@
-// check what text was put into the form field
 function handleSubmit(event) {
     event.preventDefault()
 
@@ -28,6 +27,6 @@ function handleSubmit(event) {
 }
 
 //IMPORT FILES
-import { validUrl } from './js/validURL'
+import { validUrl } from './validURL'
 //EXPORT FILES
 export {handleSubmit}

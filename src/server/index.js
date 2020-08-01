@@ -34,8 +34,8 @@ var textapi = new AYLIENTextAPI({
 
 //GET request
 app.get('/', function (req, res) {
-    res.sendFile('dist/index.html')
-    //res.sendFile(path.resolve('src/client/views/index.html'))
+    //res.sendFile('dist/index.html')
+    res.sendFile(path.resolve('src/client/views/index.html'))
 })
 
 //POST request
@@ -65,7 +65,7 @@ app.get('/test', function (req, res) {
 })
 
 // designates what port the app will listen to for incoming requests
-app.listen(8082, function () {
-    console.log('Example app listening on port 8082!')
+app.listen(8080, function () {
+    console.log('Example app listening on port 8080!')
 })
 
