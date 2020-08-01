@@ -23,6 +23,7 @@
 
         <main>
             <section>
+                <!--FORM-->
                 <form class="" onsubmit="return handleSubmit(event)">
                     <input id="name" type="text" name="input" value="" onblur="onBlur()" placeholder="Name">
                     <input type="submit" name="" value="submit" onclick="return handleSubmit(event)" onsubmit="return handleSubmit(event)">
@@ -30,9 +31,24 @@
             <section>
 
             <section>
+                <!--RESULTS-->
                 <strong>Form Results:</strong>
-                <div id="results"></div>
+                <br>
+                <div id="results">
+                    <h4>Polarity:</h4>
+                    <p id="polarity"></p>
+                    <br>
+                    <h4>Subjectivity:</h4>
+                    <p id="subjectivity"></p>
+                    <br>
+                    <h4>Confidence:</h4>
+                    <p id="Confidence"></p>
+                    <br>
+                    <h4>Irony:</h4>
+                    <p id="irony"></p>
+                </div>
             </section>
+
         </main>
 
         <footer>
