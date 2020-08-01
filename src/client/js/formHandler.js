@@ -2,7 +2,7 @@
 function handleSubmit(event) {
     event.preventDefault()
 
-    const baseURL = "http://localhost:8081/sentimentApi";
+    const baseURL = "http://localhost:8082/sentimentAPI";
     const url = document.getElementById('url').value;
 
     //CHECK IF URL IS VALID
@@ -27,16 +27,7 @@ function handleSubmit(event) {
     }
 }
 
-//VAID URL FUNCTION
-function validUrl(url) {
-    var regex = /^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$/;
-    
-    if(regex.test(url)){
-        return true;
-    }else{
-        return false;
-    }
-}
-
+//IMPORT FILES
+import { validUrl } from './js/validURL'
 //EXPORT FILES
 export {handleSubmit}

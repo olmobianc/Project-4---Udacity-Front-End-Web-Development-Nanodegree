@@ -39,7 +39,7 @@ app.get('/', function (req, res) {
 })
 
 //POST request
-app.post('/test', function (request, response) {
+app.post('/sentimentAPI', function (request, response) {
     let nameURL = request.body.input.url;
     console.log(request.body.input.url);
     textapi.sentiment({
