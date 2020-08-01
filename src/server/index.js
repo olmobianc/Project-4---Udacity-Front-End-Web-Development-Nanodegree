@@ -34,8 +34,8 @@ var textapi = new AYLIENTextAPI({
 
 //GET request
 app.get('/', function (req, res) {
-    //res.sendFile('dist/index.html')
-    res.sendFile(path.resolve('src/client/views/index.html'))
+    res.sendFile('dist/index.html')
+    //res.sendFile(path.resolve('src/client/views/index.html'))
 })
 
 //POST request
@@ -59,10 +59,6 @@ app.post('/sentimentAPI', function (request, response) {
     response.send(projectData);
     console.log(projectData);
 });
-
-app.get('/test', function (req, res) {
-    res.send(mockAPIResponse)
-})
 
 // designates what port the app will listen to for incoming requests
 app.listen(8080, function () {
