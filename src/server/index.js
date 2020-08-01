@@ -40,8 +40,8 @@ app.get('/', function (req, res) {
 
 //POST request
 app.post('/sentimentAPI', function (request, response) {
-    let nameURL = request.body.input.url;
-    console.log(request.body.input.url);
+    const nameURL = request.body.url;
+    console.log(request.body.url);
     textapi.sentiment({
         url: `${nameURL}`
     }, function (error, response) {

@@ -2,7 +2,7 @@
 function handleSubmit(event) {
     event.preventDefault()
 
-    const baseURL = "http://localhost:8082/sentimentAPI";
+    const baseURL = "http://localhost:8080/sentimentAPI";
     const url = document.getElementById('url').value;
 
     //CHECK IF URL IS VALID
