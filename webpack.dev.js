@@ -21,6 +21,12 @@ module.exports = {
             }
         ]
     },
+    output: {
+        libraryTarget: 'var',
+        library: 'Client',
+        path: path.resolve(__dirname, 'dist')
+    },
+    
     plugins: [
         new HtmlWebPackPlugin({
             template: "./src/client/views/index.html",
