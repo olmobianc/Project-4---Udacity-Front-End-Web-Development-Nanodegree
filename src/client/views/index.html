@@ -11,34 +11,42 @@
                 Let's evaluate an article with Natural Language Processing
             </div>
             <div class="paragraph">
-                navigation
+                I have built a web tool that allows users to run Natural Language Processing (NLP) on articles or blogs 
+                found on other websites.
+                NLP is a subset of AI that provides computers ability to process or interact with natural human speech. 
+                In NLP, machine learning and deep learning are used on massive amounts of data to obtain the rules and 
+                understanding of nuance in human speech.
+                <br><br>
+                <p>Try inserting an URL of your favourite article in the apposite search form..
+                </p>
+                <br>
+                <p>And you will see some amazing results!</p>
             </div>
         </header>
 
         <main>
-            <section>
+            <section class="form-container">
                 <!--FORM-->
                 <form class="" onsubmit="return handleSubmit(event)">
                     <input id="url" type="url" name="url" placeholder="Insert an article URL">
-                    <input type="submit" name="" value="submit" onclick="return handleSubmit(event)" onsubmit="return handleSubmit(event)">
+                    <input id="submit" type="submit" name="" value="submit" onclick="return handleSubmit(event)" onsubmit="return handleSubmit(event)">
                 </form>
-            <section>
+            </section>
 
-            <section>
+            <section class="form-container">
                 <!--RESULTS-->
-                <strong>Form Results:</strong>
-                <br>
+                <h1 class="result-title"><strong>Form Results:</strong></h1>
                 <div id="results">
-                    <h4>Polarity:</h4>
+                    <h3>Polarity:</h3>
                     <p id="polarity"></p>
                     <br>
-                    <h4>Subjectivity:</h4>
+                    <h3>Subjectivity:</34>
                     <p id="subjectivity"></p>
                     <br>
-                    <h4>Confidence:</h4>
+                    <h3>Confidence:</h3>
                     <p id="confidence"></p>
                     <br>
-                    <h4>Irony:</h4>
+                    <h3>Irony:</h3>
                     <p id="irony"></p>
                 </div>
             </section>
@@ -46,7 +54,7 @@
         </main>
 
         <footer>
-            <p>This is a footer</p>
+            <p class="footer-text">Developed by Olmo Biancardi</p>
         </footer>
 
     </body>

@@ -1,12 +1,38 @@
-form {
-    border: 1px solid #545454;
-    border-radius: 3px;
-    padding: 40px;
-}
-
 input {
     padding: 5px 20px;
     width: 100%;
     line-height: 16px;
-    margin: 10px 0;
+    margin: 20px 0;
+}
+
+.form-container {
+    margin: 20px 150px;
+}
+
+.results-container {
+    margin: 20px 150px;
+    font-size: 20px;
+}
+
+.result-title {
+    margin: 35px 0;
+    font-weight: 600;
+}
+
+#url {
+    border: 1px solid black;
+}
+
+#submit {
+    border: 1px solid black;
+}
+
+#submit:hover {
+    background-color: #457;
+    color: white;
+}
+
+main {
+    border: 1px solid black;
+    padding: 25px 0;
 }

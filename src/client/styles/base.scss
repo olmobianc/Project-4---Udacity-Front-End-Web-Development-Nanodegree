@@ -2,6 +2,7 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    justify-content: center;
 }
 
 main {
@@ -9,6 +10,6 @@ main {
 }
 
 section {
-    max-width: 800px;
-    margin: 50px auto;
+    max-width: 400px;
 }
+
