@@ -13,10 +13,10 @@
     <body>
 
         <header>
-            <div class="">
-                Logo
+            <div class="title">
+                Let's evaluate an article with Natural Language Processing
             </div>
-            <div class="">
+            <div class="paragraph">
                 navigation
             </div>
         </header>
@@ -25,7 +25,7 @@
             <section>
                 <!--FORM-->
                 <form class="" onsubmit="return handleSubmit(event)">
-                    <input id="name" type="text" name="input" value="" onblur="onBlur()" placeholder="Name">
+                    <input id="url" type="url" name="url" placeholder="Insert an article URL">
                     <input type="submit" name="" value="submit" onclick="return handleSubmit(event)" onsubmit="return handleSubmit(event)">
                 </form>
             <section>
@@ -42,7 +42,7 @@
                     <p id="subjectivity"></p>
                     <br>
                     <h4>Confidence:</h4>
-                    <p id="Confidence"></p>
+                    <p id="confidence"></p>
                     <br>
                     <h4>Irony:</h4>
                     <p id="irony"></p>

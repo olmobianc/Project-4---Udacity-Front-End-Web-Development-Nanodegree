@@ -32,15 +32,10 @@ var textapi = new AYLIENTextAPI({
     application_key: `${process.env.API_KEY}`
   });
 
-// designates what port the app will listen to for incoming requests
-app.listen(8080, function () {
-    console.log('Example app listening on port 8080!')
-})
-
 //GET request
 app.get('/', function (req, res) {
-    // res.sendFile('dist/index.html')
-    res.sendFile(path.resolve('src/client/views/index.html'))
+    res.sendFile('dist/index.html')
+    //res.sendFile(path.resolve('src/client/views/index.html'))
 })
 
 //POST request
@@ -53,15 +48,24 @@ app.post('/test', function (request, response) {
         if (error === null) {
             projectData['polarity'] = response.polarity;
             projectData['subjectivity'] = response.subjectivity;
-            projectData['polarity_confidence'] = response.polarity_confidence;
-            projectData['subjectivity_confidence'] = response.subjectivity_confidence;
+            projectData['confidence'] = response.confidence;
+            projectData['irony'] = response.irony;
+
             return projectData;
+        } else {
+            console.log("There was an error with your POST request!");
         }
     });
     response.send(projectData);
+    console.log(projectData);
 });
 
 app.get('/test', function (req, res) {
     res.send(mockAPIResponse)
+})
+
+// designates what port the app will listen to for incoming requests
+app.listen(8082, function () {
+    console.log('Example app listening on port 8082!')
 })
 
