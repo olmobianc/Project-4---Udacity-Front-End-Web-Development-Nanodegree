@@ -8,6 +8,13 @@ app.use(express.static('dist'))
 
 console.log(__dirname)
 
+// Require the Aylien npm package
+var aylien = require("aylien_textapi");
+var textapi = new AYLIENTextAPI({
+    application_id: "YOUR_APP_ID",
+    application_key: "YOUR_APP_KEY"
+  });
+
 app.get('/', function (req, res) {
     // res.sendFile('dist/index.html')
     res.sendFile(path.resolve('src/client/views/index.html'))
