@@ -32,6 +32,8 @@ var textapi = new aylien({
     application_key: `${process.env.API_KEY}`
   });
 
+
+
 //GET request
 app.get('/', function (req, res) {
     res.sendFile('dist/index.html')
@@ -39,9 +41,9 @@ app.get('/', function (req, res) {
 })
 
 //POST request
-app.post('/sentimentAPI', function (request, response) {
-    const nameURL = request.body.url;
-    console.log(request.body.url);
+app.post('/sentimentAPI', function (req, res) {
+    const nameURL = req.body.url;
+    console.log(req.body.url);
     textapi.sentiment({
         url: `${nameURL}`
     }, function (error, response) {
@@ -51,15 +53,15 @@ app.post('/sentimentAPI', function (request, response) {
             projectData['confidence'] = response.confidence;
             projectData['irony'] = response.irony;
 
-            response.send(projectData);
-            console.log(projectData)
+            res.send(projectData);
+            console.log(projectData);
         } else {
             console.log("There was an error with your POST request!");
         }
     });
 });
 
-const port = 8081;
+const port = 8080;
 
 // designates what port the app will listen to for incoming requests
 app.listen(port, function () {
