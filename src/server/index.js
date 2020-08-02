@@ -25,14 +25,12 @@ app.use(cors());
 
 console.log(__dirname)
 
-// Require the Aylien npm package
-var aylien = require("aylien_textapi");
+/*
 var textapi = new aylien({
-    application_id: `${process.env.API_ID}`,
+    //application_id: `${process.env.API_ID}`,
     application_key: `${process.env.API_KEY}`
   });
-
-
+*/
 
 //GET request
 app.get('/', function (req, res) {

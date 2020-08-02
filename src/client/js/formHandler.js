@@ -1,13 +1,13 @@
 function handleSubmit(event) {
     event.preventDefault()
 
-    const baseURL = "http://localhost:8080/sentimentAPI";
+    //const baseURL = "http://localhost:8080/sentimentAPI";
     const url = document.getElementById('url').value;
     console.log(url);
 
     //CHECK IF URL IS VALID
     if (validUrl(url)) {
-        fetch(baseURL, {
+        fetch(`https://api.meaningcloud.com/sentiment-2.1?key=${process.env.API_KEY}&of=json&txt=${url}&model=general&lang=en`, {
             method: 'POST',
             mode: 'cors',
             headers: {
