@@ -1,7 +1,7 @@
 function handleSubmit(event) {
     event.preventDefault()
 
-    const baseURL = "http://localhost:8080/sentimentAPI";
+    const baseURL = "http://localhost:8081/sentimentAPI";
     const url = document.getElementById('url').value;
     console.log(url);
 
@@ -16,12 +16,16 @@ function handleSubmit(event) {
             body: JSON.stringify({url: url})
         })
             .then(res => res.json())
+            .then(res => console.log('Success: ', res))
             .then(function (res) {
                 document.getElementById('polarity').innerHTML = res.polarity
                 document.getElementById('subjectivity').innerHTML = res.subjectivity
                 document.getElementById('confidence').innerHTML = res.confidence
                 document.getElementById('irony').innerHTML = res.irony
             })
+            .catch((error) => {
+            console.log(error);
+          });
     } else {
         alert("The URL is not valid. Please isert another one.")
     }
@@ -30,4 +34,4 @@ function handleSubmit(event) {
 //IMPORT FILES
 import { validUrl } from './validURL'
 //EXPORT FILES
-export {handleSubmit}
+export { handleSubmit }

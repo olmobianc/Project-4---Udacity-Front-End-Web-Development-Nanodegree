@@ -27,7 +27,7 @@ console.log(__dirname)
 
 // Require the Aylien npm package
 var aylien = require("aylien_textapi");
-var textapi = new AYLIENTextAPI({
+var textapi = new aylien({
     application_id: `${process.env.API_ID}`,
     application_key: `${process.env.API_KEY}`
   });
@@ -51,17 +51,20 @@ app.post('/sentimentAPI', function (request, response) {
             projectData['confidence'] = response.confidence;
             projectData['irony'] = response.irony;
 
-            return projectData;
+            response.send(projectData);
+            console.log(projectData)
         } else {
             console.log("There was an error with your POST request!");
         }
     });
-    response.send(projectData);
-    console.log(projectData);
 });
 
+const port = 8081;
+
 // designates what port the app will listen to for incoming requests
-app.listen(8080, function () {
-    console.log('Example app listening on port 8080!')
-})
+app.listen(port, function () {
+    console.log(`Example app listening on port ${port}!`)
+});
+
+
 
