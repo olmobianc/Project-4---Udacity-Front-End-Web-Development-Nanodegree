@@ -9,7 +9,7 @@ function handleSubmit(event) {
 
     //CHECK IF URL IS VALID
     if (validUrl(url)) {
-        fetch(`https://api.meaningcloud.com/sentiment-2.1?key=${process.env.API_KEY}&of=json&txt=${url}&model=general&lang=en`, {
+        fetch(baseURL, {
             method: 'POST',
             credentials: 'same-origin',
             mode: 'cors',

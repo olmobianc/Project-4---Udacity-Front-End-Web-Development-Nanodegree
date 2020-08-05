@@ -22,6 +22,7 @@ app.use(bodyParser.json());
 
 //Cors
 const cors = require('cors');
+const { request } = require('http');
 app.use(cors());
 
 console.log(__dirname)
@@ -42,23 +43,33 @@ app.get('/', function (req, res) {
     //res.sendFile(path.resolve('src/client/views/index.html'))
 })
 
-app.post('/sentimentAPI', async (req, res) => {
-    nameURL = req.body.url;  // retrieves the supplied URL from formHandler
-    const apiRES = await fetch(baseURL+inputURL)
-    .then( (apiRES) => apiRES.json())
-    .then( data => {
-        console.log(data.subjectivity) //log to help TS the data flow
-        res.send(data) //sends api data back to the formHandler function
-    }).catch((error) => 
-    console.log('error', error))
-});
-
 const port = 8080;
 
 // designates what port the app will listen to for incoming requests
 app.listen(port, function () {
     console.log(`Example app listening on port ${port}!`)
 });
+
+app.post('/sentimentAPI', (req, res) => {
+    const url = req.body.url;
+    getSentiment(url, apiKey, (data) => {
+        console.log(data);
+        res.send(data);
+    });
+})
+
+const getSentiment = (url, key, callback) => {
+    console.log(key);
+    request(`https://api.meaningcloud.com/sentiment-2.1?key=${key}&lang=en&url=${url}`, {
+        json: true },
+        (err, res, body) => {
+        if(!err && res.status.code == 200) {
+            callback(body);
+        } else {
+            console.log('error');
+        }
+    });
+}
 
 /*POST request
 app.post('/sentimentAPI', async (req, res) => {
@@ -79,6 +90,17 @@ app.post('/sentimentAPI', async (req, res) => {
             console.log("There was an error with your POST request!");
         }
     });
+});
+
+app.post('/sentimentAPI', (req, res) => {
+    nameURL = req.body.url;  // retrieves the supplied URL from formHandler
+    const apiRES = await fetch(baseURL+inputURL)
+    .then( (apiRES) => apiRES.json())
+    .then( data => {
+        console.log(data.subjectivity) //log to help TS the data flow
+        res.send(data) //sends api data back to the formHandler function
+    }).catch((error) => 
+    console.log('error', error))
 });
 */
 
