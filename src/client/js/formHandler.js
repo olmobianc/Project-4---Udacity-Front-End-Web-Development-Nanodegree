@@ -1,3 +1,5 @@
+import { validUrl } from './validURL'
+
 function handleSubmit(event) {
     event.preventDefault()
 
@@ -31,7 +33,5 @@ function handleSubmit(event) {
     }
 }
 
-//IMPORT FILES
-import { validUrl } from './validURL'
 //EXPORT FILES
 export { handleSubmit }

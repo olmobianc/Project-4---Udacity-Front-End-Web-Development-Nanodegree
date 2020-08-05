@@ -42,6 +42,24 @@ app.get('/', function (req, res) {
     //res.sendFile(path.resolve('src/client/views/index.html'))
 })
 
+app.post('/sentimentAPI', async (req, res) => {
+    nameURL = req.body.url;  // retrieves the supplied URL from formHandler
+    const apiRES = await fetch(baseURL+inputURL)
+    .then( (apiRES) => apiRES.json())
+    .then( data => {
+        console.log(data.subjectivity) //log to help TS the data flow
+        res.send(data) //sends api data back to the formHandler function
+    }).catch((error) => 
+    console.log('error', error))
+});
+
+const port = 8080;
+
+// designates what port the app will listen to for incoming requests
+app.listen(port, function () {
+    console.log(`Example app listening on port ${port}!`)
+});
+
 /*POST request
 app.post('/sentimentAPI', async (req, res) => {
     nameURL = req.body.url;
@@ -63,25 +81,6 @@ app.post('/sentimentAPI', async (req, res) => {
     });
 });
 */
-
-app.post('/sentimentAPI', async (req, res) => {
-    nameURL = req.body.url;  // retrieves the supplied URL from formHandler
-    console.log('inputURL now set as: ', inputURL); //log to help TS the data flow
-    const apiRES = await fetch(baseURL+inputURL)
-    .then( (apiRES) => apiRES.json())
-    .then( data => {
-        console.log(data.subjectivity) //log to help TS the data flow
-        res.send(data) //sends api data back to the formHandler function
-    }).catch((error) => 
-    console.log('error', error))
-});
-
-const port = 8080;
-
-// designates what port the app will listen to for incoming requests
-app.listen(port, function () {
-    console.log(`Example app listening on port ${port}!`)
-});
 
 
 
