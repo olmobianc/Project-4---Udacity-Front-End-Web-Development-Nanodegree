@@ -8,6 +8,7 @@ let projectData = {};
 var path = require('path')
 const express = require('express')
 const mockAPIResponse = require('./mockAPI.js')
+//const fetch = require('node-fetch');
 
 //Body-Parser
 const bodyParser = require('body-parser');
@@ -27,10 +28,13 @@ console.log(__dirname)
 
 /*
 var textapi = new aylien({
-    //application_id: `${process.env.API_ID}`,
+    application_id: `${process.env.API_ID}`,
     application_key: `${process.env.API_KEY}`
   });
 */
+const apiKey = process.env.API_KEY;
+const baseURL = `https://api.meaningcloud.com/sentiment-2.1?key=${apiKey}&lang=en&url=`
+let nameURL = [];
 
 //GET request
 app.get('/', function (req, res) {
@@ -38,9 +42,9 @@ app.get('/', function (req, res) {
     //res.sendFile(path.resolve('src/client/views/index.html'))
 })
 
-//POST request
-app.post('/sentimentAPI', function (req, res) {
-    const nameURL = req.body.url;
+/*POST request
+app.post('/sentimentAPI', async (req, res) => {
+    nameURL = req.body.url;
     console.log(req.body.url);
     textapi.sentiment({
         url: `${nameURL}`
@@ -57,6 +61,19 @@ app.post('/sentimentAPI', function (req, res) {
             console.log("There was an error with your POST request!");
         }
     });
+});
+*/
+
+app.post('/sentimentAPI', async (req, res) => {
+    nameURL = req.body.url;  // retrieves the supplied URL from formHandler
+    console.log('inputURL now set as: ', inputURL); //log to help TS the data flow
+    const apiRES = await fetch(baseURL+inputURL)
+    .then( (apiRES) => apiRES.json())
+    .then( data => {
+        console.log(data.subjectivity) //log to help TS the data flow
+        res.send(data) //sends api data back to the formHandler function
+    }).catch((error) => 
+    console.log('error', error))
 });
 
 const port = 8080;
