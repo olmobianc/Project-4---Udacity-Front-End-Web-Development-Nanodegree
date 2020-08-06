@@ -44,14 +44,14 @@ app.post('/sentimentAPI', (req, res) => {
 
 const getSentiment = (url, key, res) => {
     console.log(key);
-    axios.post(`https://api.meaningcloud.com/sentiment-2.1?key=${apiKey}&of=json&txt=${url}&model=general&lang=en`, {})    
+    axios.post(`https://api.meaningcloud.com/sentiment-2.1?key=${apiKey}&of=json&url=${url}&model=general&lang=en`, {})    
     .then(function (response){
         console.log(response.data);
         if(response.data.status.code == 0) {
             console.log(response.data);
             res.send(response.data);
         } else {
-            console.log('error');
+            console.log('there was an error');
         }
     });
 }

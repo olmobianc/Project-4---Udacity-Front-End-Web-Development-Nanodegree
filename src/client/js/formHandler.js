@@ -26,7 +26,7 @@ function handleSubmit(event) {
             document.getElementById('irony').innerHTML = res.irony;
         })
         .catch((error) => {
-            console.log("error", error);
+            console.log(" an error", error);
         })
     } else {
         alert("The URL is not valid. Please isert another one.")
