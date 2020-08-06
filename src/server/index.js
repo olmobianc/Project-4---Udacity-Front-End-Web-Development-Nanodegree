@@ -1,3 +1,5 @@
+//const request = require('request')
+var axios = require("axios");
 // To hide my API Keys
 const dotenv = require('dotenv');
 dotenv.config();
@@ -9,6 +11,8 @@ var path = require('path')
 const express = require('express')
 const mockAPIResponse = require('./mockAPI.js')
 //const fetch = require('node-fetch');
+
+
 
 //Body-Parser
 const bodyParser = require('body-parser');
@@ -51,20 +55,18 @@ app.listen(port, function () {
 });
 
 app.post('/sentimentAPI', (req, res) => {
-    const url = req.body.url;
-    getSentiment(url, apiKey, (data) => {
-        console.log(data);
-        res.send(data);
-    });
+    const url = req.query.url;
+    getSentiment(url, apiKey, res)
 })
 
-const getSentiment = (url, key, callback) => {
+const getSentiment = (url, key,res) => {
     console.log(key);
-    request(`https://api.meaningcloud.com/sentiment-2.1?key=${key}&lang=en&url=${url}`, {
-        json: true },
-        (err, res, body) => {
-        if(!err && res.status.code == 200) {
-            callback(body);
+    axios.post(`https://api.meaningcloud.com/sentiment-2.1?key=${apiKey}&of=json&txt=${url}&model=general&lang=en`, {})    
+    .then(function (response){
+        console.log(response.data);
+        if(response.data.status.code == 0) {
+            console.log(response.data);
+            res.send(response.data);
         } else {
             console.log('error');
         }
