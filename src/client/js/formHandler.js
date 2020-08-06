@@ -3,8 +3,8 @@ import { validUrl } from './validURL'
 function handleSubmit(event) {
     event.preventDefault()
 
-    const baseURL = "http://localhost:8080/sentimentAPI";
-    const url = document.getElementById('url').value;
+    const baseURL = "http://localhost:8081/sentimentAPI";
+    const url = document.getElementById('url').value; //url inserted by user
     console.log(url);
 
     //CHECK IF URL IS VALID
@@ -20,10 +20,10 @@ function handleSubmit(event) {
         })
         .then(res => res.json())
         .then(function (res) {
-            document.getElementById('polarity').innerHTML = res.polarity
-            document.getElementById('subjectivity').innerHTML = res.subjectivity
-            document.getElementById('confidence').innerHTML = res.confidence
-            document.getElementById('irony').innerHTML = res.irony
+            document.getElementById('polarity').innerHTML = res.polarity;
+            document.getElementById('subjectivity').innerHTML = res.subjectivity;
+            document.getElementById('confidence').innerHTML = res.confidence;
+            document.getElementById('irony').innerHTML = res.irony;
         })
         .catch((error) => {
             console.log("error", error);

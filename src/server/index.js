@@ -4,50 +4,33 @@ var axios = require("axios");
 const dotenv = require('dotenv');
 dotenv.config();
 
-//Entrypoint for the data
-let projectData = {};
-
 var path = require('path')
 const express = require('express')
 const mockAPIResponse = require('./mockAPI.js')
-//const fetch = require('node-fetch');
-
-
-
-//Body-Parser
-const bodyParser = require('body-parser');
 
 //Express
 const app = express()
 app.use(express.static('dist'))
 
+//Body-Parser
+const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 //Cors
 const cors = require('cors');
-const { request } = require('http');
 app.use(cors());
 
 console.log(__dirname)
 
-/*
-var textapi = new aylien({
-    application_id: `${process.env.API_ID}`,
-    application_key: `${process.env.API_KEY}`
-  });
-*/
 const apiKey = process.env.API_KEY;
-const baseURL = `https://api.meaningcloud.com/sentiment-2.1?key=${apiKey}&lang=en&url=`
-let nameURL = [];
 
 //GET request
 app.get('/', function (req, res) {
     res.sendFile('dist/index.html')
-    //res.sendFile(path.resolve('src/client/views/index.html'))
 })
 
-const port = 8080;
+const port = 8081;
 
 // designates what port the app will listen to for incoming requests
 app.listen(port, function () {
@@ -59,7 +42,7 @@ app.post('/sentimentAPI', (req, res) => {
     getSentiment(url, apiKey, res)
 })
 
-const getSentiment = (url, key,res) => {
+const getSentiment = (url, key, res) => {
     console.log(key);
     axios.post(`https://api.meaningcloud.com/sentiment-2.1?key=${apiKey}&of=json&txt=${url}&model=general&lang=en`, {})    
     .then(function (response){
