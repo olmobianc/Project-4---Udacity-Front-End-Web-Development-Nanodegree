@@ -79,7 +79,14 @@ const getSentiment = (url, key, callback) => {
     });
 }
 
-/*POST request
+
+
+
+
+
+
+
+/*POST request not working below code
 app.post('/sentimentAPI', async (req, res) => {
     nameURL = req.body.url;
     console.log(req.body.url);

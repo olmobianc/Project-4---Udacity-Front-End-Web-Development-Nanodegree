@@ -20,7 +20,8 @@ function handleSubmit(event) {
         })
         .then(res => res.json()) //translate response obj to json:
         .then(function (res) { //posts the retrieved data to the webpage
-            document.getElementById('polarity').innerHTML = res.polarity;
+            console.log(res);
+            document.getElementById('agreement').innerHTML = res.agreement;
             document.getElementById('subjectivity').innerHTML = res.subjectivity;
             document.getElementById('confidence').innerHTML = res.confidence;
             document.getElementById('irony').innerHTML = res.irony;
