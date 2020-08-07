@@ -9,7 +9,7 @@ function handleSubmit(event) {
 
     //CHECK IF URL IS VALID
     if (validUrl(url)) {
-        fetch(baseURL, {
+        fetch(baseURL, { //sends the user's URL to the server for the API to use
             method: 'POST',
             credentials: 'same-origin',
             mode: 'cors',
@@ -18,8 +18,8 @@ function handleSubmit(event) {
             },
             body: JSON.stringify({url: url})
         })
-        .then(res => res.json())
-        .then(function (res) {
+        .then(res => res.json()) //translate response obj to json:
+        .then(function (res) { //posts the retrieved data to the webpage
             document.getElementById('polarity').innerHTML = res.polarity;
             document.getElementById('subjectivity').innerHTML = res.subjectivity;
             document.getElementById('confidence').innerHTML = res.confidence;

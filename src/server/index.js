@@ -38,7 +38,7 @@ app.listen(port, function () {
 });
 
 app.post('/sentimentAPI', (req, res) => {
-    const url = req.query.url;
+    const url = req.query.url; // retrieves the supplied URL from formHandler
     getSentiment(url, apiKey, res)
 })
 
@@ -47,7 +47,7 @@ const getSentiment = (url, key, res) => {
     axios.post(`https://api.meaningcloud.com/sentiment-2.1?key=${apiKey}&of=json&url=${url}&model=general&lang=en`, {})    
     .then(function (response){
         console.log(response.data);
-        if(response.data.status.code == 0) {
+        if(response.data.status.code != 0) {
             console.log(response.data);
             res.send(response.data);
         } else {
