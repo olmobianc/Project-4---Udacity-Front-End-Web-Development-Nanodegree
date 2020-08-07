@@ -37,6 +37,7 @@ app.listen(port, function () {
     console.log(`Example app listening on port ${port}!`)
 });
 
+/*
 app.post('/sentimentAPI', (req, res) => {
     const url = req.query.url; // retrieves the supplied URL from formHandler
     getSentiment(url, apiKey, res)
@@ -52,6 +53,28 @@ const getSentiment = (url, key, res) => {
             res.send(response.data);
         } else {
             console.log('there was an error');
+        }
+    });
+}
+*/
+
+const request = require('request');
+app.post('/sentimentAPI', (req, res) => {
+    const url = req.body.url;
+    getSentiment(url, apiKey, (data) => {
+        console.log(data)
+        res.send(data);
+    });
+})
+
+const getSentiment = (url, key, callback) => {
+    request(`https://api.meaningcloud.com/sentiment-2.1?key=${key}&lang=en&url=${url}`, { 
+        json: true }, 
+        (err, res, body) => {
+        if (!err && res.statusCode == 200) {
+            callback(body);
+        }   else {
+            console.log(error);
         }
     });
 }
