@@ -15,7 +15,7 @@ The goal of this project was to practice with:
 - Service workers
 - Using APIs and creating requests to external urls
 
-This was my setup to get the project up and running.
+This was my setup to get the project up and running:
 
 - installed npm packages
 - set up server for app to run on localhost: 8081
